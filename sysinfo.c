@@ -24,6 +24,7 @@
  
 #include "sysinfo.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
@@ -35,12 +36,22 @@ static int swaps_fd;
 
 static char buffer[1024];
 
+/* reread rewritten by Ernst Kloppenburg <kloppen@isr.uni-stuttgart.de> */
+/* Now works with Linux 2.2 */
+
 static void reread( int fd, char *message )
 {
-	if ( lseek( fd, 0L, 0 ) == 0 &&
-	     read( fd, buffer, sizeof(buffer) - 1 ) > 0 )
-		return;
-       
+	int i;
+	int bytesread;
+
+	if ( lseek( fd, 0L, 0 ) == 0 ) {
+	     bytesread = read( fd, buffer, sizeof(buffer) - 1 );
+	     if ( bytesread < (sizeof(buffer) - 1) ) {
+		buffer[bytesread] = 0x0;
+                return;
+             }
+        }
+
 	perror(message);
 	exit(1);
 }
@@ -75,9 +86,12 @@ void get_meminfo( int *swapdevs, struct meminfo *result )
 
 	/* Try new /proc/meminfo format first */
 	*swapdevs = 1;
+	if ((result[0].shared = getentry("MemShared:", buffer)) < 0) {
+	    /* Linux 2.4 has MemShared (but it's always zero?), 2.6 doesn't */
+	    result[0].shared = 0;
+	}
 	if ((result[0].total   = getentry("MemTotal:", buffer))  < 0 ||
 	    (result[0].free    = getentry("MemFree:", buffer))   < 0 ||
-	    (result[0].shared  = getentry("MemShared:", buffer)) < 0 ||
 	    (result[0].buffers = getentry("Buffers:", buffer))   < 0 ||
 	    (result[0].cache   = getentry("Cached:", buffer))    < 0 ||
 	    (result[1].total   = getentry("SwapTotal:", buffer)) < 0 ||

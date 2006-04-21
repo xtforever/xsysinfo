@@ -1,0 +1,3 @@
+?package(xsysinfo):needs="x11" section="Apps/System" \
+        title="XSysInfo" \
+        command="/usr/bin/xsysinfo"

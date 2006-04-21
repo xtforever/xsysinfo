@@ -1,0 +1,14 @@
+Source: xsysinfo
+Section: utils
+Priority: optional
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper (>= 4), libxaw7-dev, xutils-dev
+Standards-Version: 3.6.2
+
+Package: xsysinfo
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Display some Linux kernel parameters in graphical form
+ This X client is like a mix of top, free and xload with the difference that
+ the values are shown in form of a horizontal bar.  The displayed values are:
+ CPU load, CPU idle, memory and swap sizes.

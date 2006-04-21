@@ -1,0 +1,53 @@
+This is the Debian GNU/Linux prepackaged version of xsysinfo.
+
+This package was put together by Michael Meskes <meskes@debian.org>,
+from sources obtained from:
+sunsite.unc.edu:/pub/Linux/system/status/xstatus/xsysinfo-1.6.tar.gz
+
+Version 1.7 is based on sources distributed with Mandrake Linux 10.2.
+
+It is now maintained by Hugo Haas <hugo@debian.org>.
+
+The original code carries the following copyright:
+
+ * Written by Gabor Herr <herr@iti.informatik.th-darmstadt.de>.
+ *
+ * Copyright (c) 1992, 1993 by Gabor Herr, all rights reserved.
+ *
+ * Permission to use, copy, modify, distribute, and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear in
+ * supporting documentation, and that may name is not used in
+ * advertising or publicity pertaining to distribution of the software
+ * without specific, written prior permission. I make no representations
+ * about the suitability of this software for any purpose. It is
+ * provided "as is" without express or implied warranty.
+
+and
+
+Copyright 1992, 1993 by Gabor Herr
+Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts,
+and the Massachusetts Institute of Technology, Cambridge, Massachusetts.
+
+                        All Rights Reserved
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation, and that the names of Gabor Herr or Digital or MIT
+not be
+used in advertising or publicity pertaining to distribution of the
+software without specific, written prior permission.
+
+GABOR HERR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
+ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
+GABOR HERR BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR
+ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+SOFTWARE.
+
+Tue May 14 11:45:36 MET DST 1996 Michael Meskes <meskes@debian.org>
+Wed Mar 11 20:28:03 GMT 1998 Hugo Haas <hugo@debian.org>

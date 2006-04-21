@@ -1,0 +1,118 @@
+.\" Copyright (c) 1999  Roland Rosenfeld <roland@debian.org>
+.\"               
+.\" This manual page is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\" 
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+.\"
+.\" This manual page is written especially for Debian Linux.
+.\"
+.TH XSYSINFO 1x "June 1999" "Debian Project" "Debian GNU/Linux"
+.SH NAME
+xsysinfo \- Display Linux kernel parameters in graphical form
+.SH SYNOPSIS
+.B xsysinfo [-help] [-update
+.IB n ]
+.B [-[no]title] [-[no]labels] [-[no]loadavg] [-[no]load] [-[no]mem]
+.B [-[no]swap] 
+.SH DESCRIPTION
+.B Xsysinfo
+is an X application to display some Linux kernel parameters in
+graphical form. It is like a mix of top, free and xload with the
+difference that the values are shown in form of a horizontal bar. The
+displayed values are: CPU load average, CPU load, memory and swap
+sizes (details see below).
+.SH OPTIONS
+.TP
+.BI -update " n"
+Set update rate to
+.I n
+seconds
+.TP
+.B -title
+Show title string
+.TP
+.B -notitle
+Don't show title string
+.TP
+.B -labels
+Show gauge labels
+.TP
+.B -nolabels
+Don't show gauge labels
+.TP
+.B -loadavg
+Show CPU load average value
+.TP
+.B -noloadavg
+Don't show CPU load average value
+.TP
+.B -load
+Show CPU load value
+.TP
+.B -noload
+Don't show CPU load value
+.TP
+.B -smp
+Show separate SMP loads
+.TP
+.B -nosmp
+Don't show separate SMP loads.
+.TP
+.B -mem
+Show memory info
+.TP
+.B -nomem
+Don't show memory info
+.TP
+.B -swap
+Show swap info
+.TP
+.B -noswap
+Don't show swap info
+.TP
+.B -help
+Display options
+.SH DISPLAY
+.B Xsysinfo
+display the following values:
+.TP
+.B CPU load average
+CPU load average between 0.000-8.000. The gauge's bar is subdivided
+into segments, where one segment represents a load value of 1.0. The
+bar's full length is automatically scaled, depending on the displayed
+value.
+.TP
+.B CPU load
+percentage CPU load time to CPU idle time subdivided in three
+segments: user load, system load and nice load. On an SMP system the
+-smp option replaces the single total load meter with a separate meter
+for each processor.
+.TP
+.B Memory
+The memory gauge's bar is subdivided into two segments with the amount
+of physical memory, which is used by processes on the left and
+physical memory used for the page and buffer cache on the right. The
+length of the whole bar, which is the sum of these two values, shows
+the amount of physical memory currently used by the system.
+.TP
+.B Swap
+The percentage of swap space used by the system to total amount of
+swap space.
+.SH AUTHORS
+.B Xsyinfo
+is written by Gabor Herr <herr@iti.informatik.th-darmstadt.de> and
+currently maintained by Ronald Wahl
+<ronald.wahl@informatik.tu-chemnitz.de>.
+.PP
+This manual page was created by Roland Rosenfeld <roland@spinnaker.de>
+for the Debian GNU/Linux system (but may be used by others).

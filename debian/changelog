@@ -1,0 +1,206 @@
+xsysinfo (1.7-3) unstable; urgency=low
+
+  * QA upload
+  * Update for the Xorg 7.0 transition: update the menu file to look in
+    /usr/bin instead of /usr/X11R6/bin, and build-depend accordingly on
+    xutils-dev to ensure we're using a compatible imake.
+  * Drop unneeded build-dep on libxp-dev.
+
+ -- Steve Langasek <vorlon@debian.org>  Fri, 21 Apr 2006 01:09:37 -0700
+
+xsysinfo (1.7-2) unstable; urgency=low
+
+  * QA upload
+  * Update build dependency on libxaw8-dev to libxaw7-dev to comply with XSF
+    plans
+
+ -- David Nusinow <dnusinow@debian.org>  Sun, 26 Mar 2006 21:20:03 -0500
+
+xsysinfo (1.7-1) unstable; urgency=low
+
+  * QA upload.
+  * Package is orphaned (see #224842); set maintainer to Debian QA Group.
+  * New upstream release.
+  * Remove object files from upstream tarball.  Closes: #252172.
+  * Display swap on 2.6 kernels; thanks to Philip Martin for the patch.
+    Closes: #227187.
+  * Rename xsysinfo.1x to xsysinfo.man as this is what the Makefile expects.
+  * Switch to debhelper 4.
+  * Replace build dependencies on libxaw7-dev and xlibs-dev with libxaw8-dev
+    and libxp-dev (the latter only because of #324275).
+  * Add support for DEB_BUILD_OPTIONS=noopt and DEB_BUILD_OPTIONS=nostrip.
+  * debian/changelog: Remove obsolete Emacs local variables.
+  * debian/copyright: Remove outdated list of changes.
+  * debian/preinst: Remove potato compatibility code.
+  * Conforms to Standards version 3.6.2.
+
+ -- Matej Vela <vela@debian.org>  Sun, 21 Aug 2005 14:58:15 +0200
+
+xsysinfo (1.6-13) unstable; urgency=low
+
+  * Using libxaw7 and libxaw7-dev (closes: #169988).
+  * Now compiles from source (closes: #164930).
+
+ -- Hugo Haas <hugo@debian.org>  Sun, 12 Jan 2003 12:30:27 -0500
+
+xsysinfo (1.6-12.2) unstable; urgency=low
+
+  * NMU; added a preinst script to delete
+    /usr/X11R6/lib/X11/app-defaults/Xsysinfo if it exists and is a symlink.
+    This is necessary because something made such a symlink in earlier
+    versions of this package, and it is no longer used. Really Closes: #86333
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 24 Mar 2001 15:38:23 -0800
+
+xsysinfo (1.6-12.1) unstable; urgency=low
+
+  * NMU
+  * rebuilt against modern xlibs-dev to move app-defaults file
+    (Closes: #86333)
+  * rejiggered upstream app-defaults mono and color files to do things the
+    canonical way (no user-visible difference, aside from the renaming of
+    the XSysinfo-mono file to XSysinfo; now is the best time to do this
+    since they are becoming conffiles)
+  * lintian 1.20.9 clean
+  * debian/conffiles: add app-defaults file
+  * debian/control:
+    - added Build-Depends
+    - bumped Standards-Version to 3.5.2
+  * debian/rules:
+    - remove call to dh_suidregister
+
+ -- Branden Robinson <branden@debian.org>  Sat, 17 Mar 2001 22:19:41 -0500
+
+xsysinfo (1.6-12) unstable; urgency=low
+
+  * Changed priority to optional.
+
+ -- Hugo Haas <hugo@debian.org>  Wed, 21 Feb 2001 15:51:15 -0500
+
+xsysinfo (1.6-11) unstable; urgency=low
+
+  * app-defaults now go in /etc/X11/app-defaults/ (closes: #86333).
+
+ -- Hugo Haas <hugo@debian.org>  Mon, 19 Feb 2001 10:04:51 -0500
+
+xsysinfo (1.6-10) unstable; urgency=low
+
+  * Added a menu entry.
+
+ -- Hugo Haas <hugo@debian.org>  Tue,  5 Oct 1999 14:03:45 -0400
+
+xsysinfo (1.6-9) unstable; urgency=low
+
+  * Modified debian/rules so that it works with the new debhelper
+    (closes: #44597).
+
+ -- Hugo Haas <hugo@debian.org>  Wed,  8 Sep 1999 13:42:15 -0400
+
+xsysinfo (1.6-8) unstable; urgency=low
+
+  * Separate load meter for each processor in an SMP machine by 
+    Philip Martin <pm@corris.dircon.co.uk>
+  * Moved the documentation tu /usr/share/doc.
+
+ -- Hugo Haas <hugo@debian.org>  Sat, 28 Aug 1999 15:32:12 -0400
+
+xsysinfo (1.6-7) unstable; urgency=low
+
+  * Added a man page for xsysinfo (closes:#35903).
+
+ -- Hugo Haas <hugo@debian.org>  Sat, 10 Jul 1999 17:54:45 -0400
+
+xsysinfo (1.6-6) unstable; urgency=low
+
+  * Removed the postinst script asking for color support (#37366).
+
+ -- Hugo Haas <hugo@debian.org>  Fri, 11 Jun 1999 15:16:38 -0400
+
+xsysinfo (1.6-5) unstable; urgency=low
+
+  * Applied patch by Ernst Kloppenburg <kloppen@isr.uni-stuttgart.de>: now
+    correctly indicates swap space used with a 2.2 kernel.
+  * This package has no upstream maintainer anymore (mail from Ronald Wahl
+     <rwahl@gmx.net>).
+
+ -- Hugo Haas <hugo@debian.org>  Tue, 20 Apr 1999 17:24:09 +0100
+
+xsysinfo (1.6-4) unstable; urgency=low
+
+  * Defined the color setting as the default choice in the postinst script
+    (#36134).
+
+ -- Hugo Haas <hugo@debian.org>  Thu, 15 Apr 1999 20:59:14 +0200
+
+xsysinfo (1.6-3) frozen unstable; urgency=low
+
+  * Renamed CHANGES.gz into changelog.gz (lintian error)
+
+ -- Hugo Haas <hugo@debian.org>  Tue, 14 Apr 1998 15:53:22 +0100
+
+xsysinfo (1.6-2) frozen unstable; urgency=low
+
+  * Corrected a typo
+  * Changed resources (update interval in seconds, not in milli-seconds)
+    (fixes #20422)
+
+ -- Hugo Haas <hugo@debian.org>  Mon, 30 Mar 1998 22:21:32 +0100
+
+xsysinfo (1.6-1) unstable; urgency=low
+
+  * New maintainer
+  * New upstream release (#17977)
+  * Updated to standards 2.4.0.0
+  * Used debhelper
+
+ -- Hugo Haas <hugo@debian.org>  Wed, 11 Mar 1998 20:10:21 +0000
+
+xsysinfo (1.5-4) unstable; urgency=LOW
+
+  * Fixed mixed libc6 dependencies.
+
+ -- Syrus Nemat-Nasser <syrus@ucsd.edu>  Thu, 13 Nov 1997 21:53:01 +0100
+
+xsysinfo (1.5-3) unstable; urgency=LOW
+
+  * Created a postinst selection of app-defaults between color and mono.
+
+ -- Syrus Nemat-Nasser <syrus@ucsd.edu>  Wed,  1 Oct 1997 21:19:14 +0000
+
+xsysinfo (1.5-2) unstable; urgency=LOW
+
+  * Fixed bugs #12652, #12904, and #13084 (obsolete dependency)
+  * First version compiled against libc6
+  * Made the app-defaults to be conffiles
+  * Made the default app-default selection color instead of mono
+
+ -- Syrus Nemat-Nasser <syrus@ucsd.edu>  Wed,  1 Oct 1997 21:19:14 +0000
+
+xsysinfo (1.5-1) unstable; urgency=LOW
+
+  * Upgraded to new upstream version
+  * Changed to new source packing scheme
+  * New maintainer
+
+ -- Syrus Nemat-Nasser <syrus@ucsd.edu>  Thu, 24 Oct 1996 23:43:04 -0700
+
+
+Tue May 14 11:53:15 MET DST 1996 Michael Meskes <meskes@debian.org>
+
+	xsysinfo (1.2-1):
+
+	* Added Debian files
+
+Wed Jun  5 15:09:49 MET DST 1996 Michael Meskes <meskes@debian.org>
+
+        xsysinfo (1.2-2):
+
+        * Added /usr/doc/xsysinfo directory (Bug#3211)
+
+Sun Jun 30 16:27:17 MET DST 1996 Michael Meskes <meskes@debian.org>
+
+        xsysinfo (1.2-3):
+
+	* New naming scheme
+
+	* Gzip manpage
