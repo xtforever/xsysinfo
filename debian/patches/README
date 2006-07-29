@@ -1,0 +1,5 @@
+README file for debian/patches
+
+I've included this dir in this package (even if it's not used) for future work: as of now, the patch in that dis is already applied to the code, but if I'll ever switch to CDBS, I'm ready to revert the patch and use debian/patches
+
+ -- Sandro Tosi <matrixhasu@gmail.com>  Sat, 29 Jul 2006 14:16:56 +0200

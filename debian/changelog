@@ -1,3 +1,30 @@
+xsysinfo (1.7-4) unstable; urgency=low
+
+  * New maintainer. (Closes: #224842)
+  * debian/compat
+    - Bump to compatibility 5
+  * debian/control
+    - Update Maintainer
+    - Bump to 3.7.2 version of debian policy
+    - set dependency against debhelper >= 5
+    - add dependencies against libsm-dev, libice-dev
+  * debian/copyright
+    - Updated
+    - added licence for xsysinfo.man (GPL2, missing: thanks to James Westby
+      for notice it on #d-mentors@irc.d.o)
+  * debian/menu
+    - Just a little reformat
+  * XSysinfo.ad
+    - Corrected, reverting previous (now wrong) modification (as stated in
+      #341866)
+  * xsysinfo.man
+    - merged with a patch from BTS so this Closes: #341866 (the patch has been
+      saved in debian/patch/bts-341866_xsysinfo.man.patch)
+  * debian/rules
+    - add xsysinfo.man to dh_installman
+
+ -- Sandro Tosi <matrixhasu@gmail.com>  Sat, 29 Jul 2006 13:53:29 +0200
+
 xsysinfo (1.7-3) unstable; urgency=low
 
   * QA upload

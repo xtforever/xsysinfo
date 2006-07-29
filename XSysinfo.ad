@@ -32,8 +32,8 @@
 *.font:			-adobe-courier-*-*-*-*-*-*-*-*-m-*-*-*
 *.title.font:		-adobe-courier-*-*-*-*-*-140-*-*-m-*-*-*
 
-! update interval for all values in seconds
-*bar.update:		1
+! update interval for all values in milli-seconds (ThMO)
+*bar.update:		200
 
 ! set foreground colors for load average
 *loadavg*bar.foreground:	grey70

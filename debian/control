@@ -1,9 +1,9 @@
 Source: xsysinfo
 Section: utils
 Priority: optional
-Maintainer: Debian QA Group <packages@qa.debian.org>
-Build-Depends: debhelper (>= 4), libxaw7-dev, xutils-dev
-Standards-Version: 3.6.2
+Maintainer: Sandro Tosi <matrixhasu@gmail.com>
+Build-Depends: debhelper (>= 5), libxaw7-dev, xutils-dev, libsm-dev, libice-dev
+Standards-Version: 3.7.2
 
 Package: xsysinfo
 Architecture: any
