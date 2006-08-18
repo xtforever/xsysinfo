@@ -1,3 +1,10 @@
+xsysinfo (1.7-5) unstable; urgency=low
+
+  * fix compile warnings (Closes: #383368)
+  * patches are now managed via dpatch
+
+ -- Sandro Tosi <matrixhasu@gmail.com>  Sat, 19 Aug 2006 01:01:36 +0200
+
 xsysinfo (1.7-4) unstable; urgency=low
 
   * New maintainer. (Closes: #224842)

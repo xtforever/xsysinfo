@@ -1,5 +1,13 @@
---- xsysinfo.man.org	2005-12-03 20:41:59.000000000 +0100
-+++ xsysinfo.man	2005-12-03 20:45:13.000000000 +0100
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## bts-341866_xsysinfo.man.dpatch by Sandro Tosi <matrixhasu@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: bts-341866_xsysinfo.man
+
+@DPATCH@
+diff -urNad xsysinfo~/xsysinfo.man xsysinfo/xsysinfo.man
+--- xsysinfo~/xsysinfo.man	2005-12-03 20:41:59.000000000 +0100
++++ xsysinfo/xsysinfo.man		2005-12-03 20:45:13.000000000 +0100
 @@ -1,4 +1,4 @@
 -.\" Copyright (c) 1999  Roland Rosenfeld <roland@debian.org>
 +.\" Copyright (c) 1999-2005  Roland Rosenfeld <roland@debian.org>
