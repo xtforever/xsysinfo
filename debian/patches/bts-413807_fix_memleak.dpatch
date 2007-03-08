@@ -1,0 +1,28 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## bts-413807_fix_memleak.dpatch by tony mancill <tmancill@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: bts-413807_fix_memleak
+
+@DPATCH@
+diff -uarb xsysinfo~/xsysinfo.c xsysinfo/xsysinfo.c
+--- xsysinfo~/xsysinfo.c	1999-05-04 22:58:03.000000000 -0700
++++ xsysinfo/xsysinfo.c	2007-03-07 11:49:20.000000000 -0800
+@@ -116,11 +116,15 @@
+ XtPointer client_data;
+ XtPointer call_data;
+ {
++	static char cpuLoadBuffer[7];
+ 	struct load load;
+ 	XgBarGaugeValues *gauge = (XgBarGaugeValues *) call_data;
+ 
+-	load.cpu = (char *)malloc(7*sizeof(char));
+-	strcpy(load.cpu, (char *)client_data);
++	// 20070307 <tmancill@debian.org>
++	// this char buffer is never freed
++	//load.cpu = (char *)malloc(7*sizeof(char));
++	load.cpu = cpuLoadBuffer;
++	strncpy(load.cpu, (char *)client_data, 7);
+ 	get_load(&load);
+ 
+ 	gauge->values[0] = norm(load.user, load.total);

@@ -1,3 +1,10 @@
+xsysinfo (1.7-6) unstable; urgency=low
+
+  * fix memleak in getloadCB() (closes: #413807)
+  * added tony mancill to uploaders
+
+ -- tony mancill <tmancill@debian.org>  Thu,  8 Mar 2007 09:59:28 -0800
+
 xsysinfo (1.7-5) unstable; urgency=low
 
   * fix compile warnings (Closes: #383368)
