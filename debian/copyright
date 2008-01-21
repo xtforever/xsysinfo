@@ -6,77 +6,49 @@ sunsite.unc.edu:/pub/Linux/system/status/xstatus/xsysinfo-1.6.tar.gz
 
 Version 1.7 is based on sources distributed with Mandrake Linux 10.2.
 
-
 It is was maintained, for some time, by Hugo Haas <hugo@debian.org>.
-
 It is now maintained by Sandro Tosi <matrixhasu@gmail.com>
 
+Upstream Author:
 
-The original code carries the following copyright:
+    Gabor Herr <herr@iti.informatik.th-darmstadt.de>
 
- * Written by Gabor Herr <herr@iti.informatik.th-darmstadt.de>.
- *
- * Copyright (c) 1992, 1993 by Gabor Herr, all rights reserved.
- *
- * Permission to use, copy, modify, distribute, and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear in
- * supporting documentation, and that may name is not used in
- * advertising or publicity pertaining to distribution of the software
- * without specific, written prior permission. I make no representations
- * about the suitability of this software for any purpose. It is
- * provided "as is" without express or implied warranty.
+Copyright:
 
-and
+    Copyright 1992, 1993 by Gabor Herr
+    Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts,
+          and the Massachusetts Institute of Technology, Cambridge, Massachusetts.
 
-Copyright 1992, 1993 by Gabor Herr
-Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts,
-and the Massachusetts Institute of Technology, Cambridge, Massachusetts.
+License:
 
-                        All Rights Reserved
+    Permission to use, copy, modify, distribute, and sell this software
+    and its documentation for any purpose is hereby granted without fee,
+    provided that the above copyright notice appear in all copies and
+    that both that copyright notice and this permission notice appear in
+    supporting documentation, and that may name is not used in
+    advertising or publicity pertaining to distribution of the software
+    without specific, written prior permission. I make no representations
+    about the suitability of this software for any purpose. It is
+    provided "as is" without express or implied warranty.
 
-Permission to use, copy, modify, and distribute this software and its
-documentation for any purpose and without fee is hereby granted,
-provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in
-supporting documentation, and that the names of Gabor Herr or Digital or MIT
-not be
-used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.
+On a Debian system the complete text of the BSD License can be found in
+the file `/usr/share/common-licenses/BSD'
 
-GABOR HERR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
-ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
-GABOR HERR BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR
-ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
-WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
-ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
-SOFTWARE.
+Additional notes are:
 
+    Permission to use, copy, modify, and distribute this software and its
+    documentation for any purpose and without fee is hereby granted,
+    provided that the above copyright notice appear in all copies and that
+    both that copyright notice and this permission notice appear in
+    supporting documentation, and that the names of Gabor Herr or Digital or MIT
+    not be
+    used in advertising or publicity pertaining to distribution of the
+    software without specific, written prior permission.
 
-The file `xsysinfo.man` carries the following copyright:
-
-Copyright (c) 1999-2005  Roland Rosenfeld <roland@debian.org>
-
-This manual page is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
-
-This manual page is written especially for Debian Linux.
-
-On a Debian system the complete text of the GNU General Public License
-can be found in the file `/usr/share/common-licenses/GPL-2'
-
-Tue May 14 11:45:36 MET DST 1996 Michael Meskes <meskes@debian.org>
-Wed Mar 11 20:28:03 GMT 1998 Hugo Haas <hugo@debian.org>
-Thu, 27 Jul 2006 22:56:34 +0200 Sandro Tosi <matrixhasu@gmail.com>
+    GABOR HERR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
+    ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
+    GABOR HERR BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR
+    ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+    WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+    ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+    SOFTWARE.

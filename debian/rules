@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
-# debian/rules for xsysinfo; dpatch to apply patches
+# debian/rules for xsysinfo
 
+include /usr/share/dpatch/dpatch.make
 
 CDEBUGFLAGS = -Wall -g
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
@@ -14,12 +15,11 @@ build-stamp: patch
 	dh_testdir
 
 	xmkmf
-	make CDEBUGFLAGS="$(CDEBUGFLAGS)"
+	$(MAKE) CDEBUGFLAGS="$(CDEBUGFLAGS)" xsysinfo
 
 	touch build-stamp
 
-clean: clean1 unpatch
-clean1:
+clean: unpatch
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp
@@ -44,11 +44,10 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs CHANGES
-	dh_installdocs
-	dh_installexamples
+	dh_installchangelogs	CHANGES
+	dh_installdocs		README
 	dh_installmenu
-	dh_installman        xsysinfo.man
+	dh_installman		debian/xsysinfo.man
 	dh_link
 	dh_strip
 	dh_compress
@@ -59,15 +58,5 @@ binary-arch: build install
 	dh_md5sums
 	dh_builddeb
 
-patch: patch-stamp
-patch-stamp:
-	dpatch apply-all -v 
-	#dpatch call-all -a=pkg-info >patch-stamp
-
-unpatch:
-	dpatch deapply-all
-	rm -rf patch-stamp debian/patched
-
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install patch unpatch \
-        clean1
+.PHONY: build clean binary-indep binary-arch binary install
