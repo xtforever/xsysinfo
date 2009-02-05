@@ -1,9 +1,22 @@
+xsysinfo (1.7-8) unstable; urgency=low
+
+  * debian/control
+    - updated my email address
+    - bump Standards-Version to 3.8.0
+      + added debian/README.source
+    - added ${misc:Depends} to bin package depends
+    - uncapitalized short description
+  * debian/copyright
+    - updated my email address
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 06 Feb 2009 00:12:58 +0100
+
 xsysinfo (1.7-7) unstable; urgency=low
 
   * debian/menu
     - updated to new menu policy
   * debian/control
-    - bump Standards-Version to 3.7.3
+    - bump Standard-Version to 3.7.3
   * debian/xsysinfo.man
     - moved here since currently at the same level of upstream code
   * debian/patches/bts-341866_xsysinfo.man.dpatch
@@ -22,9 +35,9 @@ xsysinfo (1.7-7) unstable; urgency=low
     - added local reference to BSD license
   * debian/patches/40_bts-441378_fix_buffer_length.dpatch
     - added to increase the buffer length, otherwise on amd64 system it
-      doesn't work (Closes: #441378)
+      doesn't work (Closes: 441378)
   * debian/patches/50_bts-442085_fix_cpu_bar.dpatch
-    - fix cpu bar under strange load; thanks to Stephan Seidl (Closes: #442085)
+    - fix cpu bar under strange load; thanks to Stephan Seidl (Closes: 442085)
   * debian/patches/10_bts-413807_fix_memleak.dpatch
     - patch renamed to prepend ordering number
   * debian/patches/20_bts-383368_fix_warning.dpatch
