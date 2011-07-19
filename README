@@ -1,0 +1,151 @@
+README for xsysinfo version 1.6.
+
+
+WHAT IS XSYSINFO:
+
+  Xsysinfo is an X application to display some Linux kernel parameters in
+  graphical form. It is like a mix of top, free and xload with the difference
+  that the values are shown in form of a horizontal bar. The displayed values
+  are: CPU load average, CPU load, memory and swap sizes (details see below).
+
+  Xsysinfo 1.6 runs at least under Linux 0.99pl5 with the proc filesystem (as
+  kernels from this release on support the CPU idle time, no patch is
+  necessary like in earlier versions of xsysinfo). Starting with version 1.3,
+  xsysinfo also supports the new /proc/meminfo-format used in kernels >= 1.3.x
+
+
+FOR THE IMPATIENT:
+
+  If you want to take a look at xsysinfo, before you decide to install it,
+  make sure the proc fs is mounted at /proc, then just type:
+
+	XAPPLRESDIR=. xsysinfo &
+
+
+HOW TO INSTALL:
+
+  There is a compiled ELF-version of xsysinfo included in the archive, which
+  was built under RedHat 4.2 with XFree86 3.3.1 and libc 5.3.12. If you want
+  to install this binary just type
+
+	make install
+
+  as root. xsysinfo runs under normal (755) permissions, so you don't have to
+  make it setuid/setgid.
+
+  NOTE: Use this way to install xsysinfo! `make install' not only copies the 
+  binary to the right place, it also installs the system wide application 
+  defaults file (XSysinfo). Without this file you'll get a running xsysinfo,
+  but it won't look very nice... 
+
+  If you want to create your own compiled version just type:
+
+	xmkmf
+	make clean
+	make
+
+  (you'll need the programming package and the libraries from the XFree
+  distribution to do this.)
+  Now you can install it as described above.
+
+  Xsysinfo requires that the proc filesystem is compiled into the kernel
+  (this is the default anyway) and that it is mounted on directory /proc.
+  To check this just do an `ls' on /proc, which should give something like
+  this:
+
+	$ ls /proc
+	1/       21/      27/      39/      42/      52/      kmsg     uptime
+	14/      22/      28/      4/       44/      75/      loadavg
+	15/      23/      29/      40/      46/      87/      meminfo
+	20/      24/      38/      41/      47/      self/    version
+
+  To mount the proc filesystem, add the following line to your /etc/fstab:
+
+  none            /proc           proc    defaults        # proc fs
+
+
+WHAT IS DISPLAYED:
+
+  Xsysinfo displays the following values:
+
+    - CPU load average
+	CPU load average between 0.000-8.000. The gauge's bar is subdivided
+	into segments, where one segment represents a load value of 1.0. The
+	bar's full length is automatically scaled, depending on the displayed
+	value:
+
+		load value (l)		full length	# segments
+		------------------------------------------------------
+		0.00 <= l < 1.00	1.00		1
+		1.00 <= l < 2.00	2.00		2
+		2.00 <= l < 3.00	3.00		3
+		... and so on ...
+
+  - CPU load
+	percentage CPU load time to CPU idle time subdivided in three segments:
+	user load, system load and nice load.
+
+  - Memory
+	The memory gauge's bar is subdivided into two segments with following
+	values (from left to right):
+
+	o  amount of physical memory, which is used by processes
+
+	o  physical memory used for the page and buffer cache
+
+	The length of the whole bar, which is the sum of these two values,
+	shows the amount of physical memory currently used by the system.
+
+  - Swap
+	The percentage of swap space used by the system to total amount of
+	swap space.
+
+
+COMMAND LINE OPTIONS:
+
+  Xsysinfo accepts the following command line options:
+
+	-update <n>                     set update rate to <n> milli-seconds
+	-title   (-notitle)             show (don't show) title string
+	-labels  (-nolabels)            show (don't show) gauge labels
+	-loadavg (-noloadavg)           show (don't show) CPU load average value
+	-load    (-noload)              show (don't show) CPU load value
+	-mem     (-nomem)               show (don't show) Memory info
+	-swap    (-noswap)              show (don't show) Swap info
+	-help                           show this message
+
+  You can also specify any of the standard toolkit options (see: manpage X(1)).
+
+
+CONFIGURATION:
+
+  As the most X programs, xsysinfo is highly configurable. There are two
+  resource files: XSysinfo with color independent settings and XSysinfo-color
+  with color resources. The latter is automatically loaded, if your server 
+  is set up to use color customized resource files. To do this just add 
+
+  *customization: -color
+
+  in your server resource file loaded by xrdb at startup (usually 
+  /usr/X11R6/lib/X11/xinit/.Xresources).
+
+
+ACKNOWLEDGMENTS:
+
+  Thanks to Linus and the other kernel hackers, who made Linux to this great
+  OS. Also thanks to Muhammad M. Saggaf for his suggestions and ideas for this
+  xsysinfo release. And last but not least thanks to Lucas Bussmann and 
+  Joerg Fries for creating the color resources.
+
+
+COMMENTS:
+
+  Xsyinfo is written by Gabor Herr (herr@iti.informatik.th-darmstadt.de) and
+  currently maintained by Ronald Wahl (ronald.wahl@informatik.tu-chemnitz.de).
+  Comments, bug reports, whishes etc... are welcome.
+
+  Have fun watching the kernel...
+
+Gabor & Ronald
+
+5/4/99 Mike Mondragon <dragon@gocougs.wsu.edu> added SMP support to version 1.7
