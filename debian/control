@@ -1,10 +1,11 @@
 Source: xsysinfo
 Section: utils
 Priority: optional
-Maintainer: Sandro Tosi <morph@debian.org>
-Uploaders: tony mancill <tmancill@debian.org>
+Maintainer: tony mancill <tmancill@debian.org>
 Build-Depends: debhelper (>= 5), libxaw7-dev, xutils-dev, libsm-dev, libice-dev, dpatch
-Standards-Version: 3.8.0
+Standards-Version: 3.9.2
+Vcs-Git: git://git.debian.org/git/collab-maint/xsysinfo.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/xsysinfo.git
 
 Package: xsysinfo
 Architecture: any

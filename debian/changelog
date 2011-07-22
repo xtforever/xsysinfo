@@ -1,3 +1,11 @@
+xsysinfo (1.7-9) UNRELEASED; urgency=low
+
+  * debian/control
+    - Remove Sandro Tosi from the Maintainer field (Close: #634227)
+    - Add Vcs-Git and Vcs-Browser fields
+
+ -- tony mancill <tmancill@debian.org>  Thu, 21 Jul 2011 22:26:55 -0700
+
 xsysinfo (1.7-8) unstable; urgency=low
 
   * debian/control
