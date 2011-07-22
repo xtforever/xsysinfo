@@ -1,4 +1,4 @@
-xsysinfo (1.7-9) UNRELEASED; urgency=low
+xsysinfo (1.7-9) unstable; urgency=low
 
   * debian/control
     - Remove Sandro Tosi from the Maintainer field (Close: #634227)
