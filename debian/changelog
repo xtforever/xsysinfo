@@ -1,3 +1,9 @@
+xsysinfo (1.7-10) UNRELEASED; urgency=medium
+
+  * d/changelog: Remove trailing whitespaces
+
+ -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 10:03:00 +0200
+
 xsysinfo (1.7-9) unstable; urgency=low
 
   * debian/control
@@ -194,7 +200,7 @@ xsysinfo (1.6-9) unstable; urgency=low
 
 xsysinfo (1.6-8) unstable; urgency=low
 
-  * Separate load meter for each processor in an SMP machine by 
+  * Separate load meter for each processor in an SMP machine by
     Philip Martin <pm@corris.dircon.co.uk>
   * Moved the documentation tu /usr/share/doc.
 
