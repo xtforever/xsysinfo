@@ -1,0 +1,146 @@
+Changes from version 1.6 to 1.7:
+o  Added full SMP support as follows:
+
+o  the follow data and/or functions were modified to support a SMP
+   kernel in sysinfo.h
+   char *cpu field added to load struct		// modified
+   extern int get_total_procs( void );		// added
+
+o  the follow data and/or functions were modified to support a SMP
+   kernel in sysinfo.c
+   void get_load(struct load * result)		// modified
+   int get_total_procs( void );			// added
+
+o  the follow data and/or functions were modified to support a SMP 
+   kernel in xsysinfo.c
+   struct AppData, *AppDataPtr			// modified
+   static XtResource application_resources[]	// modified
+   static XrmOptionDescRec options[]		// modified
+   static void getloadCB( widget, client_data, call_data ) // modified
+   static void create_app( top )		// modified
+
+o  Added a define to allow turning off of the now default SMP mode.
+   Turning off SMP mode on a SMP enabled kernel will display the
+   the average of all the cpu's load which is still contained on
+   on the first line of /proc/stat
+
+   Mike Mondragon <dragon@gocougs.wsu.edu>
+
+Changes from version 1.5 to 1.6:
+
+o  Added a define to allow specifying the update time in milli-seconds. This
+   is currently the default. To change the behaviour edit the Imakefile and
+   XSysinfo.ad, call `imake', `make clean' and `make'.
+   This change was contributed by Thomas M. Ott <Labalutsch@aol.com>. 
+
+o  Added support for /proc/swaps in newer (2.1.24) kernels. This pseudo file
+   gives information about every swapfile used by the system.
+   This change was contributed by Florian Depke <depke@cs.tu-berlin.de>.
+
+o  Fixed a cosmetical bug which leaves space between the right end of the bar
+   and the right end of the gauge if the bar should have the same width as the
+   gauge.
+
+o  There was a bug which cause a segmentation fault after starting xsysinfo
+   if compiled without optimization. This is now fixed.
+
+o  minor changes to the X resources
+
+o  The changes in xsysinfo are now explained in a separate CHANGES file.
+
+o  Added "Maintained-by:" to the LSM file.
+
+   Ronald Wahl <Ronald.Wahl@informatik.tu-chemnitz.de>
+
+Changes from version 1.4 to 1.5:
+
+o  The mem-bar now consist of two segments only: used memory and cache/buffers.
+o  Rename the load to loadavg.
+o  Replaced the idle bar with a load bar consisting of three segments:
+   user load/system load/nice load
+o  Added a define to allow empty segments to disappear (currently the default).
+   Otherwise every segment will be at least 1 pixel wide. To change the
+   behaviour edit the Imakefile, call `imake', `make clean' and `make'.
+o  Changed color of some bars.
+
+   Ronald Wahl <Ronald.Wahl@informatik.tu-chemnitz.de>
+
+Changes from version 1.3 to 1.4:
+
+o  Fixed mem-bar that was broken in 1.3. Removed 4th segment again and
+   merged buffers & cached.
+o  Added -nolabels switch for use with fvwm's GoodStuff (thanks to Ronald
+   Wahl <rwa@informatik.tu-chemnitz.de> for patches)
+
+   Martin Buck   <martin-2.buck@student.uni-ulm.de>
+
+
+Changes from version 1.2 to 1.3:
+
+o  Made xsysinfo understand new /proc/meminfo format introduced in 1.3.x
+   kernels.
+
+o  Split mem-bar into 4 segments (data, shared, buffers, cached) if info
+   is available.
+
+   Martin Buck   <martin-2.buck@student.uni-ulm.de>
+
+
+Changes from version 1.1 to 1.2:
+
+o	load value
+
+   The gauge for CPU load is now capable to display values up to 8.0. The 
+   bar is automatically subdivided in segments when necessary (see. below). 
+
+
+o	proc filesystem
+
+   The proc filesystem under kernel 0.99pl5 reports the absolute CPU idle
+   time in file /proc/uptime and not like the earlier kernels, with my patches
+   applied, in file /proc/idle. I changed xsysinfo to obtain the idle value 
+   from uptime.
+
+
+o	swap display
+
+   The 0.99pl5 kernel doesn't support a detailed swap space reporting in
+   /proc/meminfo any longer. Only the total swap space statistics can be 
+   obtained, so the swap gauge of xsysinfo is not segmented as in version 1.1.
+
+
+o	color resources
+
+   There is a separate resource file for color displays, which is loaded
+   automatically by X's customizations mechanism (see below).
+
+
+Changes from version 1.0 to 1.1:
+
+o	proc filesystem
+
+   I have completely rewritten the code to get the kernel params. It now uses
+   the proc filesystem, which made the whole stuff a lot easier. Another
+   advantage of the proc fs is, that xsysinfo can run under normal permissions
+   and need not to be recompiled with every new kernel release. 
+
+
+o	memory display changed
+
+   The two gauges for memory and cache sizes are now merged together. The
+   new gauge is still in form of a bar, but is subdivided into three `segments',
+   each displayed in a different color. The meaning of the three segments
+   is: buffer cache, shared part of memory, non-shared part of memory. The 
+   length of the whole bar is proportional to the amount of all used memory.
+
+
+o	more than one swap area supported
+
+   The gauge for swap size is now also subdivided, one `segment' for each
+   swap file/partition.
+
+
+o	gauges now can be disabled
+
+   Now it is possible to disable each of the gauges either through 
+   application resources or through command line options.

@@ -1,0 +1,43 @@
+/* 
+ * Written by Gabor Herr <herr@iti.informatik.th-darmstadt.de>.
+ *
+ * Copyright (c) 1992, 1993 by Gabor Herr, all rights reserved.
+ * 
+ * Permission to use, copy, modify, distribute, and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear in
+ * supporting documentation, and that may name is not used in
+ * advertising or publicity pertaining to distribution of the software
+ * without specific, written prior permission. I make no representations
+ * about the suitability of this software for any purpose. It is
+ * provided "as is" without express or implied warranty.
+ */
+
+/* CDEBUGFLAGS = -g -fno-omit-frame-pointer */
+
+/*
+ * If ALLOW_EMPTY_SEGMENTS is defined then empty segments would be
+ * disappearing. Otherwise every segment is at least 1 pixel wide.
+ */
+EXTRA_DEFINES = -DALLOW_EMPTY_SEGMENTS
+
+/* If USE_MILLI_SECONDS is defined *all* values specifying the update time
+ * *have* to be expressed in milli-seconds instead of full seconds only.
+ * To fall back to the old behaviour simply give 1000ms...
+ * Note:
+ *   Be sure to update the file XSyscolor.ad accordingly if this symbol
+ *   is *not* defined !
+ * (ThMO)
+ */
+EXTRA_DEFINES += -DUSE_MILLI_SECONDS
+
+LOCAL_LIBRARIES = XawClientLibs
+DEPLIBS=
+
+SRCS = BarGauge.c sysinfo.c xsysinfo.c 
+OBJS = $(SRCS:.c=.o)
+
+ComplexProgramTarget(xsysinfo)
+InstallAppDefaults(XSysinfo)
+InstallAppDefaults(XSysinfo-color)
