@@ -1,13 +1,8 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## bts-413807_fix_memleak.dpatch by tony mancill <tmancill@debian.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: bts-413807_fix_memleak
+From: tony mancill <tmancill@debian.org>
+Subject: bts-413807_fix_memleak
 
-@DPATCH@
-diff -uarb xsysinfo~/xsysinfo.c xsysinfo/xsysinfo.c
---- xsysinfo~/xsysinfo.c	1999-05-04 22:58:03.000000000 -0700
-+++ xsysinfo/xsysinfo.c	2007-03-07 11:49:20.000000000 -0800
+--- a/xsysinfo.c
++++ b/xsysinfo.c
 @@ -116,11 +116,15 @@
  XtPointer client_data;
  XtPointer call_data;

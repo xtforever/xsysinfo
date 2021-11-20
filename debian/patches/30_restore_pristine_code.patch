@@ -1,13 +1,9 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 30_restore_pristine_code.dpatch by Sandro Tosi <matrixhasu@gmail.com>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: New patch generated from xsysinfo 1.7-7 diff.gz
+From: Sandro Tosi <matrixhasu@gmail.com>
+Subject: New patch generated from xsysinfo 1.7-7 diff.gz
 
-@DPATCH@
 
---- xsysinfo-1.7.orig/sysinfo.c
-+++ xsysinfo-1.7/sysinfo.c
+--- a/sysinfo.c
++++ b/sysinfo.c
 @@ -24,6 +24,7 @@
   
  #include "sysinfo.h"

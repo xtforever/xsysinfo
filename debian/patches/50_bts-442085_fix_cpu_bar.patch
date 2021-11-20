@@ -1,0 +1,39 @@
+From: Stephan Seidl <stephan.seidl@tu-dresden.de>
+Subject: BTS 442085: fix cpu bar under strange loads
+
+
+---
+ sysinfo.c |   20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+--- a/sysinfo.c
++++ b/sysinfo.c
+@@ -187,8 +187,28 @@
+ 		loadptr = last_load + index;
+ 
+ 	bufptr = strstr(bufptr, result->cpu);
++#if (1)
++	{
++		/* from 2.6 .../Documentation/filesystems/proc.txt */
++		unsigned long aux_us = 0, /* normal processes executing in user mode */
++			      aux_ni = 0, /* niced  processes executing in user mode */
++			      aux_sy = 0, /* processes executing in kernel mode */
++			      aux_id = 0, /* twiddling thumbs */
++			      aux_wa = 0, /* waiting for I/O to complete */
++			      aux_hi = 0, /* servicing hardware interrupts */
++			      aux_si = 0; /* servicing softirqs */
++		sscanf( bufptr, "%*s %lu %lu %lu %lu %lu %lu %lu\n",
++			&aux_us, &aux_ni, &aux_sy, &aux_id,
++			&aux_wa, &aux_hi, &aux_si );
++		curr_load.user   = aux_us;
++		curr_load.nice   = aux_ni;
++		curr_load.system = aux_sy + aux_hi + aux_si;
++		curr_load.idle   = aux_id + aux_wa;
++	}
++#else
+ 	sscanf( bufptr, "%*s %lu %lu %lu %lu\n", &curr_load.user,
+ 		&curr_load.nice, &curr_load.system, &curr_load.idle );
++#endif
+ 	curr_load.total = curr_load.user + curr_load.nice + curr_load.system +
+ 		curr_load.idle;
+ 

@@ -1,0 +1,34 @@
+From: Sandro Tosi <matrixhasu@gmail.com>
+Subject: bts-383368_fix_warning
+
+---
+ xsysinfo.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/xsysinfo.c
++++ b/xsysinfo.c
+@@ -27,6 +27,7 @@
+ #include <X11/Xaw/Label.h>
+ #include "BarGauge.h"
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "sysinfo.h"
+ 
+ #define norm(x,max)	((max) == 0 ? 0 : (double)(x) / (max))
+@@ -329,9 +330,7 @@
+ 	fprintf(stderr,"\nor one of the standard toolkit options.\n\n");
+ }
+ 
+-main( argc, argv )
+-	int argc;
+-char **argv;
++int main( int argc, char **argv )
+ {
+ 	Arg args[1];
+ 	Widget toplevel;
+@@ -362,4 +361,5 @@
+ 
+ 	XtRealizeWidget(toplevel);
+ 	XtAppMainLoop(context);
++	return 0;
+ }

@@ -1,0 +1,16 @@
+From: Sandro Tosi <matrixhasu@gmail.com>
+Subject: BTS 441378, increase the buffer length
+
+--- a/sysinfo.c
++++ b/sysinfo.c
+@@ -34,7 +34,9 @@
+ static int loadavg_fd;
+ static int swaps_fd;
+ 
+-static char buffer[1024];
++// Sandro Tosi, 2008-01-21
++// Size 16k, it must be bigger then any of /proc/{meminfo,loadavg,stat}
++static char buffer[16384];
+ 
+ /* reread rewritten by Ernst Kloppenburg <kloppen@isr.uni-stuttgart.de> */
+ /* Now works with Linux 2.2 */
