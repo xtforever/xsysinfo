@@ -1,4 +1,4 @@
-xsysinfo (1.7-10) UNRELEASED; urgency=medium
+xsysinfo (1.7-10) unstable; urgency=medium
 
   [ Ondřej Nový ]
   * d/changelog: Remove trailing whitespaces
@@ -6,7 +6,6 @@ xsysinfo (1.7-10) UNRELEASED; urgency=medium
 
   [ Jari Aalto ]
   * Upgrade to packaging format to "3.0 quilt"
-  * debian/control; update to debhelper to 9
   * debian/copyright
     Remove link to non-existing Debian copy of BSD license (Lintian).
 
@@ -14,8 +13,10 @@ xsysinfo (1.7-10) UNRELEASED; urgency=medium
   * Refresh patches
   * Bump Standards-Version to 4.6.0
   * Use DH sequencer for debian/rules (Closes: #998972)
+  * Create upstream and pristine-tar branches.
+  * Use debhelper-compat 13 (Closes: #965909)
 
- -- tony mancill <tmancill@debian.org>  Fri, 19 Nov 2021 21:43:55 -0800
+ -- tony mancill <tmancill@debian.org>  Fri, 19 Nov 2021 22:13:48 -0800
 
 xsysinfo (1.7-9) unstable; urgency=low
 
