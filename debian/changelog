@@ -1,9 +1,21 @@
 xsysinfo (1.7-10) UNRELEASED; urgency=medium
 
+  [ Ondřej Nový ]
   * d/changelog: Remove trailing whitespaces
   * d/control: Set Vcs-* to salsa.debian.org
 
- -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 10:03:00 +0200
+  [ Jari Aalto ]
+  * Upgrade to packaging format to "3.0 quilt"
+  * debian/control; update to debhelper to 9
+  * debian/copyright
+    Remove link to non-existing Debian copy of BSD license (Lintian).
+
+  [ tony mancill ]
+  * Refresh patches
+  * Bump Standards-Version to 4.6.0
+  * Use DH sequencer for debian/rules (Closes: #998972)
+
+ -- tony mancill <tmancill@debian.org>  Fri, 19 Nov 2021 21:43:55 -0800
 
 xsysinfo (1.7-9) unstable; urgency=low
 
