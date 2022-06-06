@@ -24,6 +24,7 @@
  
 #include "sysinfo.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
@@ -33,7 +34,9 @@ static int load_fd;
 static int loadavg_fd;
 static int swaps_fd;
 
-static char buffer[1024];
+// Sandro Tosi, 2008-01-21
+// Size 16k, it must be bigger then any of /proc/{meminfo,loadavg,stat}
+static char buffer[16384];
 
 static void reread( int fd, char *message )
 {
@@ -171,8 +174,28 @@ void get_load(struct load * result)
 		loadptr = last_load + index;
 
 	bufptr = strstr(bufptr, result->cpu);
+#if (1)
+	{
+		/* from 2.6 .../Documentation/filesystems/proc.txt */
+		unsigned long aux_us = 0, /* normal processes executing in user mode */
+			      aux_ni = 0, /* niced  processes executing in user mode */
+			      aux_sy = 0, /* processes executing in kernel mode */
+			      aux_id = 0, /* twiddling thumbs */
+			      aux_wa = 0, /* waiting for I/O to complete */
+			      aux_hi = 0, /* servicing hardware interrupts */
+			      aux_si = 0; /* servicing softirqs */
+		sscanf( bufptr, "%*s %lu %lu %lu %lu %lu %lu %lu\n",
+			&aux_us, &aux_ni, &aux_sy, &aux_id,
+			&aux_wa, &aux_hi, &aux_si );
+		curr_load.user   = aux_us;
+		curr_load.nice   = aux_ni;
+		curr_load.system = aux_sy + aux_hi + aux_si;
+		curr_load.idle   = aux_id + aux_wa;
+	}
+#else
 	sscanf( bufptr, "%*s %lu %lu %lu %lu\n", &curr_load.user,
 		&curr_load.nice, &curr_load.system, &curr_load.idle );
+#endif
 	curr_load.total = curr_load.user + curr_load.nice + curr_load.system +
 		curr_load.idle;
 

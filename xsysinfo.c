@@ -27,6 +27,7 @@
 #include <X11/Xaw/Label.h>
 #include "BarGauge.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include "sysinfo.h"
 
 #define norm(x,max)	((max) == 0 ? 0 : (double)(x) / (max))
@@ -116,11 +117,15 @@ static void getloadCB( widget, client_data, call_data )
 XtPointer client_data;
 XtPointer call_data;
 {
+	static char cpuLoadBuffer[7];
 	struct load load;
 	XgBarGaugeValues *gauge = (XgBarGaugeValues *) call_data;
 
-	load.cpu = (char *)malloc(7*sizeof(char));
-	strcpy(load.cpu, (char *)client_data);
+	// 20070307 <tmancill@debian.org>
+	// this char buffer is never freed
+	//load.cpu = (char *)malloc(7*sizeof(char));
+	load.cpu = cpuLoadBuffer;
+	strncpy(load.cpu, (char *)client_data, 7);
 	get_load(&load);
 
 	gauge->values[0] = norm(load.user, load.total);
@@ -325,9 +330,7 @@ static void show_usage()
 	fprintf(stderr,"\nor one of the standard toolkit options.\n\n");
 }
 
-main( argc, argv )
-	int argc;
-char **argv;
+int main( int argc, char **argv )
 {
 	Arg args[1];
 	Widget toplevel;
@@ -358,4 +361,5 @@ char **argv;
 
 	XtRealizeWidget(toplevel);
 	XtAppMainLoop(context);
+	return 0;
 }
