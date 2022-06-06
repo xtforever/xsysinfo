@@ -103,21 +103,15 @@ static struct meminfo swap[MAX_SWAPFILES];
 static int swapfiles;
 static int memupdate_freq = 0;
 
-static void getloadavgCB( widget, client_data, call_data )
-	Widget widget;
-XtPointer client_data;
-XtPointer call_data;
+static void getloadavgCB(Widget widget,XtPointer client_data,XtPointer call_data)
 {
 	XgBarGaugeValues *gauge = (XgBarGaugeValues *) call_data;
 	gauge->values[0] = get_loadavg();  
 }
 
-static void getloadCB( widget, client_data, call_data )
-	Widget widget;
-XtPointer client_data;
-XtPointer call_data;
+static void getloadCB( Widget widget,XtPointer client_data,XtPointer call_data)
 {
-	static char cpuLoadBuffer[7];
+	static char cpuLoadBuffer[15];
 	struct load load;
 	XgBarGaugeValues *gauge = (XgBarGaugeValues *) call_data;
 
@@ -133,7 +127,7 @@ XtPointer call_data;
 	gauge->values[2] = norm(load.nice, load.total);
 }
 
-static void update_meminfo()
+static void update_meminfo(void)
 {
 	static int count = 0;
 
@@ -145,10 +139,7 @@ static void update_meminfo()
 	get_meminfo( &swapfiles, swap );
 }
 
-static void getmemCB( widget, client_data, call_data )
-	Widget widget;
-XtPointer client_data;
-XtPointer call_data;
+static void getmemCB( Widget widget, XtPointer client_data,XtPointer call_data)
 {
 	XgBarGaugeValues *gauge = (XgBarGaugeValues *) call_data;
 	struct meminfo *mem = swap;
@@ -169,10 +160,7 @@ XtPointer call_data;
 	}
 }
 
-static void getswapCB( widget, client_data, call_data )
-	Widget widget;
-XtPointer client_data;
-XtPointer call_data;
+static void getswapCB( Widget widget,XtPointer client_data,XtPointer call_data)
 {
 	XgBarGaugeValues *gauge = (XgBarGaugeValues *) call_data;
 	int i;
@@ -191,12 +179,12 @@ XtPointer call_data;
 					total);
 }
 
-static Widget create_gauge( name, parent, segs, valueproc, client_data )
-	String name;
-Widget parent;
-XtCallbackProc valueproc;
-int segs;
-XtPointer client_data;
+static Widget create_gauge( 
+			   String name,
+			   Widget parent,
+			   int segs,
+			   XtCallbackProc valueproc,
+			   XtPointer client_data)
 {
 	Widget gauge;
 	Widget bar;
@@ -226,8 +214,7 @@ XtPointer client_data;
 	return bar;
 }
 
-static void create_app( top )
-	Widget top;
+static void create_app( Widget top )
 {
 	Widget form;
 	Widget above_widget = NULL;
@@ -309,7 +296,7 @@ static void create_app( top )
 		XtAppError( context,"All gauges disabled, nothing to show.\n" );
 }
 
-static void show_usage()
+static void show_usage(void)
 {
 	fprintf(stderr,"xsysinfo version 1.7\n\n");
 	fprintf(stderr,"usage: xsysinfo [options...]\n\n");
