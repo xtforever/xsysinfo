@@ -234,7 +234,7 @@ int sysinfo_init( void )
 int get_total_procs( void )
 {
 	int count = 1;
-	char cpu_num[7];
+	char cpu_num[16];
 	char *bufptr;
 
 	reread( load_fd, "get_total_procs" );
