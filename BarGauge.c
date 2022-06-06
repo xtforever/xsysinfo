@@ -148,8 +148,7 @@ WidgetClass barGaugeWidgetClass = (WidgetClass) &barGaugeClassRec;
 static void draw_it();
 
 /* ARGSUSED */
-static void Initialize (greq, gnew)
-	Widget greq, gnew;
+static void Initialize (Widget greq, Widget gnew)
 {
 	BarGaugeWidget w = (BarGaugeWidget)gnew;
 	XGCValues gcval;
@@ -177,8 +176,7 @@ static void Initialize (greq, gnew)
 	}
 }
  
-static void Destroy (gw)
-	Widget gw;
+static void Destroy (Widget gw)
 {
 	BarGaugeWidget w = (BarGaugeWidget)gw;
 	int i;
@@ -197,19 +195,14 @@ static void Destroy (gw)
  */
 
 /* ARGSUSED */
-static void Redisplay(w, event, region)
-	Widget w;
-XEvent *event;
-Region region;
+static void Redisplay(Widget w,XEvent *event,Region region)
 {
 	(void) repaint_window ((BarGaugeWidget)w);
 }
 
 /* ARGSUSED */
 static void 
-draw_it(client_data, id)
-	XtPointer client_data;
-XtIntervalId *id;		/* unused */
+draw_it(XtPointer client_data,  XtIntervalId *id	/* unused */)
 {
 	BarGaugeWidget w = (BarGaugeWidget)client_data;
 	XgBarGaugeValues vals;
@@ -232,8 +225,7 @@ XtIntervalId *id;		/* unused */
 } /* draw_it */
 
 static void 
-repaint_window(w)
-	BarGaugeWidget w;
+repaint_window(	BarGaugeWidget w)
 {
 	double x_exact, error = 0.0;
 	int x, lastx;
@@ -302,8 +294,7 @@ repaint_window(w)
 }
 
 /* ARGSUSED */
-static Boolean SetValues (current, request, new)
-	Widget current, request, new;
+static Boolean SetValues (Widget current, Widget request, Widget new)
 {
 	BarGaugeWidget old = (BarGaugeWidget)current;
 	BarGaugeWidget w = (BarGaugeWidget)new;
