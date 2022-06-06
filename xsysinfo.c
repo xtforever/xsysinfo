@@ -258,9 +258,8 @@ static void create_app( Widget top )
 		}
 		else {
 			for( i = 0; i < total_procs; i ++) {
-				bufptr = (char *)malloc(7*sizeof(char));
+			        bufptr = (char *)malloc(15*sizeof(char));
 				sprintf(bufptr, "cpu%d ", i);
-
 				this = XtParent(create_gauge( "load", form, 3, getloadCB, bufptr ));
 				XtVaSetValues( this,
 					       XtNfromVert, above_widget,
@@ -319,7 +318,7 @@ static void show_usage(void)
 
 int main( int argc, char **argv )
 {
-	Arg args[1];
+  //	Arg args[1];
 	Widget toplevel;
 
 	toplevel = XtAppInitialize( &context, "XSysinfo",
